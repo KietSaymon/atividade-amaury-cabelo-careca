@@ -1,0 +1,86 @@
+cadastro = []
+
+def adicionar_cliente():
+    nome = input("Digite o nome do cliente: ")
+
+    print("\n=== SERVIÇOS DA BARBEARIA ===")
+    print("1 - Corte ............. R$ 25,00")
+    print("2 - Barba ............. R$ 25,00")
+    print("3 - Sobrancelha ....... R$ 10,00")
+    print("4 - Bigode ............ R$ 10,00")
+    print("5 - Platinado ......... R$ 120,00")
+    print("6 - Pacote(Cab+Bar+Sob) R$ 55,00")
+
+    opcao = input("Escolha o serviço: ")
+
+    if opcao == "1":
+        servico = "Corte"
+        valor = 25
+    elif opcao == "2":
+        servico = "Barba"
+        valor = 25
+    elif opcao == "3":
+        servico = "Sobrancelha"
+        valor = 10
+    elif opcao == "4":
+        servico = "Bigode"
+        valor = 10
+    elif opcao == "5":
+        servico = "Platinado"
+        valor = 120
+    elif opcao == "6":
+        servico = "Pacote 1 (Cab+Bar+Sob)"
+        valor = 55
+    else:
+        print("Serviço inválido!")
+        return
+
+    cliente = {
+        "nome": nome,
+        "servico": servico,
+        "valor": valor
+    }
+
+    cadastro.append(cliente)
+
+    print("Cliente cadastrado com sucesso!")
+
+def relatorio():
+    if len(cadastro) == 0:
+        print("Nenhum cliente cadastrado.")
+        return
+
+    total = 0
+
+    print("\n===== RELATÓRIO =====")
+
+    for cliente in cadastro:
+        print(f"Nome: {cliente['nome']}")
+        print(f"Serviço: {cliente['servico']}")
+        print(f"Valor: R$ {cliente['valor']:.2f}")
+        print("-" * 20)
+
+        total += cliente["valor"]
+
+    print(f"Total arrecadado: R$ {total:.2f}")
+
+while True:
+    print("\n=== BARBEARIA ===")
+    print("1 - Cadastrar Cliente")
+    print("2 - Relatório")
+    print("3 - Sair")
+
+    opcao = input("Escolha: ")
+
+    if opcao == "1":
+        adicionar_cliente()
+
+    elif opcao == "2":
+        relatorio()
+
+    elif opcao == "3":
+        print("Encerrando sistema...")
+        break
+
+    else:
+        print("Opção inválida.")
